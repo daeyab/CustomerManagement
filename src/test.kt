@@ -3,16 +3,12 @@ import java.util.*
 fun main(){
 
     val clientmanager=ClientManager()
-  //  val client1=clientmanager.findClient("gdlee")
-  //  val client2=clientmanager.findClient("gd")
-  //  println(client1)
- //   println(client2)
     val scan=Scanner(System.`in`)
     var menu:Int?=null
 
 
     while(menu!=0){
-        println("1.[계정 검색]             2.[계정 추가]             3.[계정 변경]             4.[계정 삭제]             5.[점수 순위]             6.[점수 부여]")
+        println("1.[계정 검색]             2.[계정 추가]             3.[계정 변경]             4.[계정 삭제]             5.[점수 순위]             6.[점수 부여]             7.[계정 목록]")
         menu=scan.nextInt()
         when(menu){
             /*
@@ -24,6 +20,7 @@ fun main(){
             4->{clientmanager.deleteClient()}
             5->{clientmanager.showRank()}
             6->{clientmanager.givePoints()}
+            7->{clientmanager.printClient()}
             else->{}
         }
     }
