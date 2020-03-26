@@ -2,6 +2,7 @@ import FIleVariables.client
 import FIleVariables.isClient
 import FIleVariables.path
 import FIleVariables.resetFileIOvars
+import FIleVariables.syncMapAndTxt
 import FIleVariables.systemscanner
 import java.io.FileWriter
 import java.io.IOException
@@ -23,21 +24,28 @@ class AddClient() {
 
     fun getClientID(){
         while(true){
-            print("* ID를 입력하세요 : ")
+            print("* ID를 입력하세요 (4~15자): ")
             id = systemscanner.next()
+            if(id.length<4 || id.length>15){
+                println("길이가 부적합합니다. (4~15자) ")
+                return;
+            }
+
             if(!isClient(id))
                 break
-            println("* 해당 ID가 존재 합니다.")
+            println("해당 ID가 존재 합니다.")
+
         }
     }
     fun getClientPW():String{
         while(true)
         {
-            print("* 비밀번호를 입력하세요 : ")
+            print("* 비밀번호를 입력하세요 (4~15자) : ")
            pw = systemscanner.next()
-            print("* 비밀번호를 중복 입력하세요 : ")
+            print("* 비밀번호를 중복 입력하세요 (4~15자) : ")
             val pwcheck = systemscanner.next()
-            if (pw.equals(pwcheck)) break;
+            if (pw.equals(pwcheck) && pw.length>=4 && pw.length<=15)
+                break
             else println("비밀번호가 일치하지 않습니다.")
         }
         return pw
@@ -49,16 +57,14 @@ class AddClient() {
         }
         return name
     }
-
-
-    open fun getClientTel():String{
+    fun getClientTel():String{
         tel@ while (true)
         {
-            print("* 번호를 입력하세요 (ex. xxx-xxxx-xxxx) *없으면 no를 입력하세요* : ")
+            print("* 번호를 입력하세요 (ex. xxx-xxxx-xxxx) [없으면 no를 입력하세요] : ")
 
             tel = systemscanner.next()
             if (tel.equals("no")) {
-                tel = "NOPHONE"
+                tel = "NO_PHONENUMBER"
                 break;
             }
             if (tel.length != 13) {
@@ -82,18 +88,11 @@ class AddClient() {
         }
         return tel
     }
-    fun writeInTxtAndMap(){
-        resetFileIOvars()
-        val txtInfo = id + " " + pw + " " + name + " " + tel + " " + point + "\n"
-        println(txtInfo)
-        try {
-            FileWriter(path,true).use { it.write(txtInfo) }
-            //FileWriter(경로, 추가여부).
-        }
-        catch (e: IOException) {}
+    fun addAndSync(){
         client[id]=Client(id,pw!!,name,tel!!,point)
-
-        println(client)
-
+        println("* 계정이 정상적으로 추가되었습니다.")
+        //추가하는 과정
+        syncMapAndTxt()
     }
+
 }

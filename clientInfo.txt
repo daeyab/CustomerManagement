@@ -1,6 +1,8 @@
-daeyeop 1 대엽 010-2222-2222 0
-dodo dodo dodo NOPHONE 0
-aaaa aaaa aaaa NOPHONE 0
-bbbb bbbb bbbb NOPHONE 0
-zzzz zzzz asdsa NOPHONE 0
-cccc cccc cccc NOPHONE 0
+daeyeop 1234 대엽 010-2222-2222 1
+dodo dodo dodo NO_PHONENUMBER 12
+zzzz zzzz asdsa NO_PHONENUMBER 4
+daeyab eoduq davud NO_PHONENUMBER 15
+salsa alal name? NO_PHONENUMBER 200
+cncn cncn cncn NO_PHONENUMBER 1500
+newID asdf Jessica 010-1234-1234 0
+didi dldl dodo NO_PHONENUMBER 0

@@ -1,35 +1,37 @@
+import FIleVariables.client
+import FIleVariables.readNumber
 import java.util.*
 
 fun main(){
 
     val clientmanager=ClientManager()
-    val scan=Scanner(System.`in`)
     var menu:Int?=null
 
-
     while(menu!=0){
-        println("1.[계정 검색]             2.[계정 추가]             3.[계정 변경]             4.[계정 삭제]             5.[점수 순위]             6.[점수 부여]             7.[계정 목록]")
-        menu=scan.nextInt()
+        println("\n\n\n" +
+                "---------------------------------------------------------------------------------------------\n" +
+                "1.[계정 검색]             2.[계정 추가]             3.[계정 변경]             4.[계정 삭제]\n" +
+                "5.[점수 순위]             6.[점수 부여]             7.[계정 목록]             0.[종료]\n" +
+                "---------------------------------------------------------------------------------------------")
+        print("* 메뉴를 선택해주세요 : ")
+        menu=readNumber()
         when(menu){
-            /*
-
-             */
             1->{clientmanager.searchClient()}
             2->{clientmanager.addClient()}
             3->{clientmanager.editClient()}
             4->{clientmanager.deleteClient()}
             5->{clientmanager.showRank()}
             6->{clientmanager.givePoints()}
-            7->{clientmanager.printClient()}
-            else->{}
+            7->{clientmanager.printClients()}
+            else ->{ println("다시 입력하여 주시기 바랍니다")}
         }
     }
+}
 
     /*
    기능 추가
    - 별도 -
        1) 비밀번호 기능 부여 ok
-       2) 닉네임 기능 부여 (중복X) ok
 
    - 추가 -
        1) 계정 추가
@@ -51,4 +53,3 @@ fun main(){
        1) ID 와 PW 일치하면 변경하고 싶은 거 변경
        2) 점수 변경하기 n점씩 올릴 수 있는지 입력
     */
-}
